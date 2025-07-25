@@ -1,0 +1,116 @@
+/* Safari Layout - Custom Sidebar Modifications */
+
+/* Logo behavior in collapsed sidebar */
+.left-sidebar.collapsed .sidebar-header .app-logo {
+    max-height: 50px;
+    max-width: 50px;
+    transition: all 0.3s ease;
+}
+
+.left-sidebar.collapsed .sidebar-header {
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-sidebar.collapsed .sidebar-header .navbar-brand {
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Show condensed menu instead of hiding completely */
+.left-sidebar.collapsed .sidebar-content .layout-side-section {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide section labels and text in collapsed state */
+.left-sidebar.collapsed .standard-sidebar-label,
+.left-sidebar.collapsed .sidebar-item-label {
+    display: none;
+}
+
+/* Style menu items for collapsed state */
+.left-sidebar.collapsed .desk-sidebar-item.standard-sidebar-item {
+    padding: 8px 0;
+    margin: 4px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+}
+
+.left-sidebar.collapsed .sidebar-item-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.left-sidebar.collapsed .sidebar-item-icon:hover {
+    background-color: var(--bg-light-gray);
+}
+
+/* Style the actual icons */
+.left-sidebar.collapsed .sidebar-item-icon svg,
+.left-sidebar.collapsed .sidebar-item-icon .indicator {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hide nested/child items in collapsed state */
+.left-sidebar.collapsed .sidebar-child-item,
+.left-sidebar.collapsed .nested-container .sidebar-item-container {
+    display: none;
+}
+
+/* Hide sidebar controls in collapsed state */
+.left-sidebar.collapsed .sidebar-item-control {
+    display: none;
+}
+
+/* Adjust standard sidebar sections */
+.left-sidebar.collapsed .standard-sidebar-section {
+    margin-bottom: 8px;
+}
+
+/* Tooltip support for collapsed sidebar */
+.left-sidebar.collapsed .sidebar-item-icon {
+    position: relative;
+}
+
+.left-sidebar.collapsed .sidebar-tooltip {
+    position: absolute;
+    left: 55px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--tooltip-bg, #333);
+    color: var(--tooltip-color, white);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.left-sidebar.collapsed .sidebar-item-icon:hover .sidebar-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Icon styling */
+.icon,
+.es-icon {
+    margin-left: 2px;
+    margin-right: 2px;
+}

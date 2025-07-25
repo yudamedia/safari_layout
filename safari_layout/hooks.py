@@ -25,12 +25,17 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/safari_layout/css/safari_layout.css"
-# app_include_js = "/assets/safari_layout/js/safari_layout.js"
+app_include_css = "/assets/safari_layout/css/safari_layout.css"
+app_include_js = "/assets/safari_layout/js/safari_layout.js"
+
+# include custom FontAwesome Pro icons
+app_include_icons = [
+    "safari_layout/icons/safari_icons.svg"
+]
 
 # include js, css files in header of web template
-# web_include_css = "/assets/safari_layout/css/safari_layout.css"
-# web_include_js = "/assets/safari_layout/js/safari_layout.js"
+web_include_css = "/assets/safari_layout/css/safari_layout.css"
+web_include_js = "/assets/safari_layout/js/safari_layout.js"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "safari_layout/public/scss/website"
