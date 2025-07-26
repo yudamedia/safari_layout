@@ -63,9 +63,7 @@ body,
     border-radius: 0px !important;
 }
 
-#left-sidebar .layout-side-section-content:has(.desk-sidebar) {
-    padding-right: 0px !important;
-}    
+    
 
 /* Text Color Overrides */
 .text-muted,
@@ -87,8 +85,6 @@ h1, h2, h3, h4, h5, h6,
 .desk-sidebar {
     background-color: var(--safari-secondary) !important;
     border-right: 1px solid var(--safari-secondary-30) !important;
-    padding-top: 0px !important;
-    margin-top: 0px !important;
 }
 
 /* Sidebar Header */
@@ -98,7 +94,6 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Logo behavior in collapsed sidebar */
-
 .left-sidebar.collapsed .sidebar-header .app-logo {
     max-height: 50px;
     max-width: 50px;
@@ -106,7 +101,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .left-sidebar.collapsed .sidebar-header {
-    padding: 4px !important;
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,7 +127,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Style menu items for collapsed state */
-.left-sidebar.collapsed {
+.left-sidebar.collapsed .desk-sidebar-item.standard-sidebar-item {
     padding: 8px 0;
     margin: 4px 0;
     display: flex;
@@ -164,7 +159,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Hide nested/child items in collapsed state */
 .left-sidebar.collapsed .sidebar-child-item,
-.left-sidebar.collapsed .nested-container {
+.left-sidebar.collapsed .nested-container .sidebar-item-container {
     display: none;
 }
 
@@ -179,12 +174,16 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Sidebar Menu Items */
-
+.desk-sidebar-item,
+.sidebar-item-container {
+    border-radius: 6px !important;
+    margin: 2px 8px !important;
+    transition: all 0.2s ease !important;
+}
 
 .desk-sidebar-item:hover,
 .sidebar-item-container:hover {
     background-color: var(--safari-surface) !important;
-    border-radius: 8px !important;
 }
 
 .desk-sidebar-item.active,
@@ -365,16 +364,11 @@ h1, h2, h3, h4, h5, h6,
 
 /* ===== DASHBOARD WIDGETS ===== */
 
-.shortcut-widget-box .widget-head {
-    border-bottom: none !important;
-}
-
 /* Dashboard Cards */
 .widget-head {
-    background-color: transparent !important;
-    /* background-color: var(--safari-secondary) !important; */
+    background-color: var(--safari-secondary) !important;
     color: var(--safari-text-primary) !important;
-     border-bottom: 1px solid var(--safari-secondary-30) !important; 
+    border-bottom: 1px solid var(--safari-secondary-30) !important;
 }
 
 .widget-body {
@@ -465,9 +459,8 @@ h1, h2, h3, h4, h5, h6,
 /* User Avatar Styling */
 .avatar,
 .user-avatar {
-    /* background-color: var(--safari-primary) !important; */
+    background-color: var(--safari-primary) !important;
     color: var(--safari-surface) !important;
-    padding-right: 5px !important;
 }
 
 /* ===== SCROLLBARS ===== */
@@ -503,20 +496,3 @@ h1, h2, h3, h4, h5, h6,
         background-color: rgba(51, 51, 51, 0.5) !important;
     }
 }
-
-.sidebar-item-icon {
-    padding-right: -2px !important; 
-}
-
-body {
-    background-color: var(--safari-background) !important;
-  }
-
-  .page-head {
-    background-color: var(--safari-background) !important;
-}
-
- .page-container {
-    background-color: var(--safari-background) !important;
- }
-  
