@@ -1,0 +1,191 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("Login") }}{% endblock %}
+{% block navbar %}
+<!-- Top navbar is removed by overriding the navbar block with empty content -->
+{% endblock %}
+{% block page_content %}
+<!-- Custom Safari ERP Login Template -->
+<style>
+  /* Critical CSS directly in the page for faster rendering */
+  body {
+    background: linear-gradient(to bottom right, #F5F5DC, #E8E0C8);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  }
+  /* Base layout CSS - the rest will be loaded from the external file */
+  .page-card-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  /* Balance fix styles */
+  .page-card-container { align-items: stretch; }
+  .safari-brand-panel { display: flex; flex-direction: column; justify-content: center; }
+  .safari-brand-content { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .for-login { display: flex; justify-content: center; align-items: center; }
+  .page-card { display: flex; flex-direction: column; justify-content: center; height: 100%; margin: 0; }
+  .safari-footer { margin-top: auto; padding-top: 2rem; }
+  .safari-login-card { flex-grow: 0; margin-bottom: auto; }
+</style>
+
+<link rel="stylesheet" href="/assets/safari_layout/css/safari_theme_login.css">
+
+<div class="page-card-container">
+  <!-- Left panel with logo -->
+  <div class="safari-brand-panel">
+    <div class="safari-background-pattern"></div>
+    <div class="safari-brand-content">
+      <div class="safari-logo-container">
+        <img src="{{ safari_logo }}" alt="{{ safari_title }} Logo" class="safari-logo">
+      </div>
+      <h1 class="safari-brand-title">{{ safari_title }}</h1>
+      <p class="safari-brand-subtitle">{{ safari_subtitle }}</p>
+    </div>
+    <!-- Decorative elements -->
+    <div class="safari-decorative-circle-1"></div>
+    <div class="safari-decorative-circle-2"></div>
+  </div>
+  
+  <!-- Right panel with login form -->
+  <section class="for-login">
+    <div class="page-card">
+      <!-- Mobile logo (visible on smaller screens) -->
+      <div class="safari-mobile-logo">
+        <img src="{{ safari_logo }}" alt="{{ safari_title }} Logo">
+        <h1 class="safari-mobile-title">{{ safari_title }}</h1>
+      </div>
+      
+      <div class="safari-login-card">
+        <div class="safari-login-header">
+          <h2 class="safari-login-title">{{ _("Login to Your Account") }}</h2>
+        </div>
+        
+        <div class="safari-login-body">
+          <!-- Login Form - Now with form/ajax handling -->
+          <form id="safari-login-form" class="form-signin" role="form">
+            <input type="hidden" name="cmd" value="login">
+            <input type="hidden" name="csrf_token" value="{{ frappe.session.csrf_token }}">
+            
+            {% if redirect_to %}
+            <input type="hidden" name="redirect-to" value="{{ redirect_to }}">
+            {% endif %}
+            
+            {% if frappe.utils.cint(frappe.db.get_value("System Settings", "System Settings", "allow_login_using_mobile_number")) %}
+                <div class="form-group">
+                    <label class="form-label" for="login_email">{{ _("Email or Mobile No") }}</label>
+                    <input type="text" id="login_email" class="form-control" name="usr" placeholder="{{ _('Email or Mobile No') }}" required autofocus>
+                </div>
+            {% else %}
+                <div class="form-group">
+                    <label class="form-label" for="login_email">{{ _("Email Address") }}</label>
+                    <input type="text" id="login_email" class="form-control" name="usr" placeholder="{{ _('Email Address') }}" required autofocus>
+                </div>
+            {% endif %}
+                
+            <div class="form-group">
+                <label class="form-label" for="login_password">{{ _("Password") }}</label>
+                <input type="password" id="login_password" class="form-control" name="pwd" placeholder="{{ _('Password') }}" required>
+            </div>
+            
+            <div class="safari-remember-section">
+                <div class="safari-remember-me">
+                    <input type="checkbox" id="remember-me" class="safari-checkbox" name="remember_me">
+                    <label class="safari-remember-label" for="remember-me">{{ _("Remember me") }}</label>
+                </div>
+                <p class="forgot-password-message">
+                    <a href="/update-password" class="safari-forgot-link">{{ _("Forgot Password?") }}</a>
+                </p>
+            </div>
+            
+            <div id="login-error" class="alert alert-danger" style="display: none; margin-bottom: 15px; color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; padding: 0.75rem 1.25rem; border-radius: 0.25rem;"></div>
+            
+            <button id="safari-login-button" class="btn-login btn-complete" type="submit">
+                {{ _("Sign In") }}
+            </button>
+            
+            <!-- Sign up link if needed -->
+            <div class="safari-help-links">
+                <p>{{ _("Don't have an account?") }} {{ _("Contact your system administrator") }}</p>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="safari-footer">
+        <p>&copy; {{ year }} {{ safari_title }}. All rights reserved.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<!-- Footer is also removed for a cleaner login page -->
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+{% block script %}
+<!-- Add login handling JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Focus the email field on page load
+    document.getElementById('login_email').focus();
+    
+    // Handle form submission
+    document.getElementById('safari-login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const form = document.getElementById('safari-login-form');
+      const formData = new FormData(form);
+      
+      // Show loading state
+      const loginButton = document.getElementById('safari-login-button');
+      const originalButtonText = loginButton.innerText;
+      loginButton.innerText = 'Signing in...';
+      loginButton.disabled = true;
+      
+      // Clear any previous errors
+      document.getElementById('login-error').style.display = 'none';
+      
+      // Submit the form via fetch
+      fetch('/', {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin',
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.message === 'Logged In') {
+          // Success! Redirect to app
+          window.location.href = data.home_page || '/app';
+        } else {
+          // Handle other success cases
+          window.location.href = data.redirect_to || '/app';
+        }
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error during login:', error);
+        
+        // Reset button state
+        loginButton.innerText = originalButtonText;
+        loginButton.disabled = false;
+        
+        // Show error message
+        const errorElement = document.getElementById('login-error');
+        errorElement.textContent = 'Login failed. Please check your credentials and try again.';
+        errorElement.style.display = 'block';
+      });
+    });
+  });
+</script>
+{% endblock %}

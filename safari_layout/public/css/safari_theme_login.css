@@ -1,0 +1,411 @@
+/* Safari ERP Custom Login Page Styles */
+
+/* CSS Variables for Safari Theme */
+:root {
+  --safari-red: #8B4513;
+  --safari-light: #F5F5DC;
+  --safari-dark: #2C1810;
+  --safari-gold: #DAA520;
+  --safari-green: #228B22;
+  --safari-blue: #4169E1;
+  --safari-orange: #FF8C00;
+  --safari-gray: #6C757D;
+  --safari-white: #FFFFFF;
+  --safari-black: #000000;
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  background: linear-gradient(to bottom right, var(--safari-light), #E8E0C8);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Main Container */
+.page-card-container {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+/* Left Brand Panel */
+.safari-brand-panel {
+  display: flex;
+  width: 50%;
+  background-color: var(--safari-red);
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  min-height: 100vh;
+}
+
+/* Background Pattern */
+.safari-background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/safari_layout/images/pattern.svg');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+/* Brand Content */
+.safari-brand-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 100%;
+  color: var(--safari-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Logo Container */
+.safari-logo-container {
+  margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  display: inline-block;
+}
+
+.safari-logo {
+  width: 220px;
+  height: auto;
+  /* No filter - logo appears in original color */
+}
+
+/* Brand Title */
+.safari-brand-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--safari-white);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Brand Subtitle */
+.safari-brand-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0;
+  color: var(--safari-white);
+  opacity: 0.9;
+}
+
+/* Decorative Circles */
+.safari-decorative-circle-1 {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.safari-decorative-circle-2 {
+  position: absolute;
+  bottom: 30%;
+  left: 15%;
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Right Login Panel */
+.for-login {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background: var(--safari-white);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  min-height: 100vh;
+}
+
+.page-card {
+  padding: 2rem;
+  width: 100%;
+  max-width: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+}
+
+/* Mobile Logo (Hidden by default) */
+.safari-mobile-logo {
+  display: none;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.safari-mobile-logo img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 1rem;
+  /* Mobile logo also in original color */
+}
+
+.safari-mobile-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--safari-red);
+  margin: 0;
+}
+
+/* Login Card */
+.safari-login-card {
+  flex-grow: 0;
+  margin-bottom: auto;
+}
+
+/* Login Header */
+.safari-login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.safari-login-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--safari-dark);
+  margin: 0 0 0.5rem 0;
+}
+
+/* Login Body */
+.safari-login-body {
+  margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.form-signin {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--safari-dark);
+  font-size: 0.9rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #E5E7EB;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  background-color: var(--safari-white);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--safari-red);
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.form-control::placeholder {
+  color: #9CA3AF;
+}
+
+/* Remember Me Section */
+.safari-remember-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.safari-remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.safari-checkbox {
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--safari-red);
+}
+
+.safari-remember-label {
+  font-size: 0.9rem;
+  color: var(--safari-gray);
+  cursor: pointer;
+}
+
+.forgot-password-message {
+  margin: 0;
+}
+
+.safari-forgot-link {
+  font-size: 0.9rem;
+  color: var(--safari-red);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.safari-forgot-link:hover {
+  color: var(--safari-dark);
+  text-decoration: underline;
+}
+
+/* Login Button */
+.btn-login {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background-color: var(--safari-red);
+  color: var(--safari-white);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.btn-login:hover {
+  background-color: var(--safari-dark);
+}
+
+.btn-login:disabled {
+  background-color: var(--safari-gray);
+  cursor: not-allowed;
+}
+
+/* Help Links */
+.safari-help-links {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.safari-help-links p {
+  font-size: 0.9rem;
+  color: var(--safari-gray);
+  margin: 0;
+}
+
+/* Footer */
+.safari-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.safari-footer p {
+  font-size: 0.8rem;
+  color: var(--safari-gray);
+  margin: 0.25rem 0;
+}
+
+/* Alert Styles */
+.alert {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+  .safari-brand-panel {
+    display: none;
+  }
+  
+  .for-login {
+    width: 100%;
+    border-radius: 0;
+  }
+  
+  .safari-mobile-logo {
+    display: block;
+  }
+  
+  .page-card {
+    padding: 1.5rem;
+  }
+  
+  .safari-login-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-card {
+    padding: 1rem;
+  }
+  
+  .safari-remember-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .safari-brand-title {
+    font-size: 2rem;
+  }
+  
+  .safari-brand-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.safari-decorative-circle-1 {
+  animation: float 6s ease-in-out infinite;
+}
+
+.safari-decorative-circle-2 {
+  animation: float 8s ease-in-out infinite reverse;
+}

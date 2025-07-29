@@ -69,6 +69,11 @@ web_include_js = "/assets/safari_layout/js/safari_layout.js"
 # 	"Role": "home_page"
 # }
 
+# Website routing
+website_route_rules = [
+    {"from_route": "/login", "to_route": "login"},
+]
+
 # Generators
 # ----------
 

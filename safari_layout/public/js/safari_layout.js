@@ -99,6 +99,25 @@ frappe.safari_layout = {
 };
 
 // Register custom icons when ready
-frappe.ready(function() {
-    frappe.safari_layout.register_custom_icons();
-});
+function registerSafariIcons() {
+    if (frappe && frappe.safari_layout) {
+        frappe.safari_layout.register_custom_icons();
+    }
+}
+
+// Try to register icons when frappe is ready
+if (frappe && frappe.ready) {
+    frappe.ready(registerSafariIcons);
+} else {
+    // Fallback: wait for frappe to be available
+    function waitForFrappe() {
+        if (frappe && frappe.ready) {
+            frappe.ready(registerSafariIcons);
+        } else if (frappe && frappe.safari_layout) {
+            registerSafariIcons();
+        } else {
+            setTimeout(waitForFrappe, 100);
+        }
+    }
+    waitForFrappe();
+}

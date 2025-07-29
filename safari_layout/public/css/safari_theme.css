@@ -1,0 +1,488 @@
+/* safari_theme.css - Fluid Navbar and Seamless Connection */
+
+/* Base Background and Text */
+body {
+    background-color: #F5F2ED;
+    color: #333333;
+    font-family: "Inter", "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+}
+
+/* Layout main container */
+.layout-main {
+    height: 100vh !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    color: #8D6748;
+}
+
+/* Primary Buttons */
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:hover {
+    background-color: #8D6748;
+    border-color: #8D6748;
+    color: #ffffff;
+}
+
+/* Sidebar - Full height positioning */
+.layout-side-section {
+    background-color: #DCC7A6 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 280px !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+    border-right: none !important;
+    overflow-y: auto !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Navbar - Seamless and fluid positioning */
+.navbar,
+.navbar-default,
+header.navbar,
+.sticky-top {
+    background-color: #DCC7A6 !important;
+    color: #333333 !important;
+    margin-left: 160px !important;
+    width: calc(100% - 160px) !important;
+    z-index: 1100 !important;
+    border: none !important;
+    border-bottom: 2px solid #C9B289 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hide navbar logo since we have it in sidebar */
+.navbar-brand,
+.navbar-home,
+.app-logo {
+    display: none !important;
+}
+
+/* Adjust navbar container to fill remaining space */
+.navbar .container,
+.navbar .container-fluid {
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    height: 60px !important;
+    gap: 15px !important;
+}
+
+/* Force navbar content to right side */
+.navbar .navbar-collapse {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    flex-grow: 1 !important;
+}
+
+.navbar .navbar-nav {
+    flex-direction: row !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    gap: 10px !important;
+}
+
+/* Search and nav items positioning */
+.navbar .form-control,
+.navbar .global-search,
+.navbar .search-bar,
+.navbar .search-form {
+    margin-left: auto !important;
+    margin-right: 10px !important;
+}
+
+.navbar .nav-item,
+.navbar .dropdown {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* Main content area */
+.layout-main-section {
+    margin-left: 160px !important;
+    padding-top: 30px !important;
+    height: 100vh !important;
+    background-color: #F5F2ED !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: 10px !important;
+    transition: all 0.3s ease !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    width: calc(100% - 160px) !important;
+}
+
+/* Fix page head that was causing title area misalignment */
+.page-head {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+    background: transparent !important;
+    margin-bottom: 10px !important;
+    padding-top: 0 !important;
+}
+
+.page-head .container {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    max-width: none !important;
+}
+
+.page-head-content {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Fix any title area or page head issues */
+.page-title,
+.page-breadcrumbs {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Title area specific fixes */
+.title-area {
+    margin: 0 !important;
+}
+
+.title-text {
+    color: #8D6748 !important;
+    font-weight: 600 !important;
+}
+
+/* Safari sidebar logo styling */
+.safari-sidebar-logo {
+    height: 80px !important;
+    background-color: #8D6748 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-bottom: 2px solid #C9B289 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    padding: 0 20px !important;
+    flex-shrink: 0 !important;
+    cursor: default !important;
+    margin: 0 !important;
+}
+
+.safari-sidebar-logo .logo-content {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.safari-sidebar-logo .logo-content:hover {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.safari-sidebar-logo img {
+    height: 35px !important;
+    width: 35px !important;
+    margin-right: 10px !important;
+    filter: brightness(0) invert(1) !important;
+}
+
+.safari-sidebar-toggle {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 4px !important;
+    padding: 6px 8px !important;
+    color: white !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    z-index: 10 !important;
+}
+
+.safari-sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+.safari-sidebar-toggle:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Sidebar items styling */
+.sidebar-item:hover,
+.sidebar-item.selected {
+    background-color: #C9B289 !important;
+    border-radius: 8px !important;
+    color: #000 !important;
+    margin: 2px 8px !important;
+}
+
+.sidebar-item-container {
+    color: #333 !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+.sidebar-item-container:hover {
+    background-color: #C9B289 !important;
+    border-radius: 8px !important;
+    margin: 2px 8px !important;
+}
+
+.sidebar-item-container.selected {
+    background-color: #8D6748 !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    margin: 2px 8px !important;
+}
+
+/* Card/Box styling */
+.form-section,
+.section-body,
+.grid-row,
+.widget-box,
+.widget {
+    background-color: #FAFAF9 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    border: 1px solid #E8E0D3 !important;
+}
+
+.section-body h4 {
+    color: #8D6748 !important;
+    margin-top: 16px !important;
+    border-bottom: 2px solid #DCC7A6 !important;
+    padding-bottom: 8px !important;
+    font-weight: 600 !important;
+}
+
+/* Links */
+a {
+    color: #E6723B !important;
+    transition: color 0.3s ease !important;
+}
+
+a:hover {
+    color: #8D6748 !important;
+}
+
+/* Status Indicators */
+.indicator-green {
+    background-color: #A2B29F !important;
+}
+
+.indicator-red {
+    background-color: #B64D3D !important;
+}
+
+.indicator-blue {
+    background-color: #758E4F !important;
+}
+
+/* Navbar items */
+.navbar .nav-item .nav-link {
+    color: #333 !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.navbar .nav-item .nav-link:hover {
+    color: #8D6748 !important;
+    background-color: rgba(141, 103, 72, 0.1) !important;
+}
+
+/* Table styling */
+table tr:hover {
+    background-color: #F0EDE7 !important;
+}
+
+/* Header section and form labels */
+.page-head,
+.form-label {
+    color: #333 !important;
+    font-weight: 500 !important;
+}
+
+/* Page title styling */
+.page-title {
+    color: #8D6748 !important;
+    font-weight: 600 !important;
+    font-size: 24px !important;
+}
+
+/* Badges and labels */
+.label,
+.badge {
+    background-color: #E6723B !important;
+    color: white !important;
+    border-radius: 6px !important;
+}
+
+/* Sidebar collapse functionality - FLUID NAVBAR */
+.safari-sidebar-collapsed .layout-side-section {
+    width: 60px !important;
+    overflow: hidden !important;
+}
+
+.safari-sidebar-collapsed .safari-sidebar-logo {
+    padding: 0 10px !important;
+    justify-content: center !important;
+}
+
+.safari-sidebar-collapsed .safari-sidebar-logo .logo-content {
+    display: none !important;
+}
+
+.safari-sidebar-collapsed .safari-sidebar-toggle {
+    position: absolute !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* FLUID NAVBAR - Expands when sidebar collapses */
+.safari-sidebar-collapsed .navbar,
+.safari-sidebar-collapsed header.navbar,
+.safari-sidebar-collapsed .sticky-top {
+    left: 60px !important;
+    width: calc(100% - 60px) !important;
+}
+
+.safari-sidebar-collapsed .layout-main-section {
+    margin-left: 60px !important;
+    width: calc(100% - 60px) !important;
+}
+
+/* Container and layout fixes */
+.container {
+    max-width: none !important;
+}
+
+.layout-main-section .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Fix any floating containers */
+.page-container,
+.desk-page {
+    margin-left: 0 !important;
+    padding: 0 !important;
+}
+
+/* Breadcrumbs styling */
+.page-breadcrumbs {
+    margin-bottom: 15px !important;
+    padding: 0 !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .layout-side-section {
+        left: -280px !important;
+        transition: left 0.3s ease !important;
+        z-index: 1050 !important;
+    }
+    
+    .layout-side-section.mobile-open {
+        left: 0 !important;
+    }
+    
+    /* Mobile navbar takes full width */
+    .navbar,
+    .navbar-default,
+    header.navbar,
+    .sticky-top {
+        left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .layout-main-section {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .safari-mobile-toggle {
+        position: fixed !important;
+        top: 15px !important;
+        left: 15px !important;
+        z-index: 1200 !important;
+        background: rgba(220, 199, 166, 0.9) !important;
+        border: none !important;
+        border-radius: 6px !important;
+        padding: 8px 12px !important;
+        color: #8D6748 !important;
+        font-size: 18px !important;
+        cursor: pointer !important;
+    }
+    
+    .mobile-sidebar-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        z-index: 1040 !important;
+        display: none !important;
+    }
+    
+    .mobile-sidebar-overlay.active {
+        display: block !important;
+    }
+}
+
+/* Smooth transitions for all layout changes */
+.layout-side-section,
+.layout-main-section,
+.navbar,
+header.navbar,
+.sticky-top {
+    transition: all 0.3s ease !important;
+}
+
+/* Scrollbar styling for sidebar */
+.layout-side-section::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.layout-side-section::-webkit-scrollbar-track {
+    background: #C9B289 !important;
+}
+
+.layout-side-section::-webkit-scrollbar-thumb {
+    background: #8D6748 !important;
+    border-radius: 3px !important;
+}
+
+.layout-side-section::-webkit-scrollbar-thumb:hover {
+    background: #6B5139 !important;
+}
+  
