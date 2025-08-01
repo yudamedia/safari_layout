@@ -1,72 +1,69 @@
 app_name = "safari_layout"
 app_title = "Safari Layout"
-app_publisher = "Yuda Media"
-app_description = "Custom Safari Themed UI app for ERPNext"
+app_publisher = "Safari ERP"
+app_description = "Enhanced layout and navigation for Safari ERP"
 app_email = "yuda@graphicshop.co.ke"
 app_license = "mit"
 
-# Apps
-# ------------------
 
-# required_apps = []
+# Include JS and CSS files
+app_include_js = [
+    "/assets/safari_layout/js/safari_layout.js",
+    "/assets/safari_layout/js/role_navigation.js"
+]
 
-# Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "safari_layout",
-# 		"logo": "/assets/safari_layout/logo.png",
-# 		"title": "Safari Layout",
-# 		"route": "/safari_layout",
-# 		"has_permission": "safari_layout.api.permission.has_app_permission"
-# 	}
-# ]
+app_include_css = [
+    "/assets/safari_layout/css/safari_layout.css", 
+    "/assets/safari_layout/css/role_navigation.css"
+]
 
-# Includes in <head>
-# ------------------
-
-# include js, css files in header of desk.html
-app_include_css = "/assets/safari_layout/css/safari_layout.css"
-app_include_js = "/assets/safari_layout/js/safari_layout.js"
-
-# include custom FontAwesome Pro icons
 app_include_icons = [
     "safari_layout/icons/safari_icons.svg"
 ]
 
-# include js, css files in header of web template
-web_include_css = "/assets/safari_layout/css/safari_layout.css"
-web_include_js = "/assets/safari_layout/js/safari_layout.js"
+# Boot session data - inject role information
+boot_session = "safari_layout.utils.boot.get_boot_session_data"
 
-# include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "safari_layout/public/scss/website"
+# Document Events for role-based access
+doc_events = {
+    "User": {
+        "after_insert": "safari_core.utils.role_utils.setup_role_permissions",
+        "on_update": "safari_core.utils.role_utils.setup_role_permissions"
+    }
+    # "Workspace": {
+    #     "validate": "safari_core.utils.role_utils.validate_workspace_access"
+    # }
+}
 
-# include js, css files in header of web form
-# webform_include_js = {"doctype": "public/js/doctype.js"}
-# webform_include_css = {"doctype": "public/css/doctype.css"}
+# Jinja environment - add role checking functions
+jenv = {
+    "methods": [
+        "safari_core.utils.role_utils.can_access_workspace",
+        "safari_core.utils.role_utils.get_user_workspace_access"
+    ]
+}
 
-# include js in page
-# page_js = {"page" : "public/js/file.js"}
+# Website context - add role info for portal users
+website_context = {
+    "get_user_workspace_access": "safari_core.utils.role_utils.get_user_workspace_access"
+}
 
-# include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
-# doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+# Override standard methods - temporarily disabled
+# override_whitelisted_methods = {
+#     "frappe.desk.desktop.get_desktop_settings": "safari_layout.utils.desktop.get_desktop_settings_with_roles"
+# }
 
-# Svg Icons
-# ------------------
-# include app icons in desk
-# app_include_icons = "safari_layout/public/icons.svg"
+# Standard portal pages (if needed for portal access)
+standard_portal_menu_items = []
 
-# Home Pages
-# ----------
+# Installation hooks
+after_install = "safari_layout.install.after_install"
 
-# application home page (will override Website Settings)
-# home_page = "login"
-
-# website user home page (by Role)
-# role_home_page = {
-# 	"Role": "home_page"
+# Scheduler Events (optional - for role auditing)
+# scheduler_events = {
+#     "daily": [
+#         "safari_core.utils.role_utils.audit_workspace_access"
+#     ]
 # }
 
 # Website routing

@@ -1,0 +1,109 @@
+/* ~/frappe-bench/apps/safari_layout/safari_layout/public/css/role_navigation.css */
+/* Role-based Navigation Styling */
+
+/* Hidden workspace items should be completely invisible */
+.safari-navigation-hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Smooth transitions for showing/hiding navigation */
+.sidebar-item,
+.workspace-item,
+.nav-item {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+/* When hiding with animation */
+.safari-navigation-hiding {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Improve sidebar spacing when items are hidden */
+.layout-side-section .sidebar-item:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+/* Ensure role-restricted workspaces don't flash before hiding */
+.safari-navigation-processing .sidebar-item,
+.safari-navigation-processing .workspace-item {
+    visibility: hidden;
+}
+
+.safari-navigation-ready .sidebar-item,
+.safari-navigation-ready .workspace-item {
+    visibility: visible;
+}
+
+/* Custom styling for remaining visible navigation items */
+.layout-side-section .sidebar-item.safari-role-visible {
+    border-left: 3px solid var(--safari-accent, #CD853F);
+    background-color: rgba(139, 69, 19, 0.05);
+}
+
+/* Hover effects for visible items */
+.layout-side-section .sidebar-item.safari-role-visible:hover {
+    background-color: rgba(139, 69, 19, 0.1);
+    border-left-color: var(--safari-primary, #8B4513);
+}
+
+/* Ensure dropdown menus also respect role hiding - but protect navbar dropdowns */
+.sidebar .dropdown-menu .dropdown-item.safari-navigation-hidden,
+.workspace-dropdown .workspace-link.safari-navigation-hidden {
+    display: none !important;
+}
+
+/* Override any safari-navigation-hidden class on navbar elements - but don't force display */
+.navbar .safari-navigation-hidden,
+#toolbar .safari-navigation-hidden {
+    display: initial !important;
+    visibility: visible !important;
+}
+
+/* Style for role indicator (optional - for debugging) */
+.safari-role-indicator {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: var(--safari-primary, #8B4513);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 0.8;
+    pointer-events: none;
+    display: none; /* Hidden by default */
+}
+
+/* Show role indicator in development */
+body.safari-dev-mode .safari-role-indicator {
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .safari-navigation-hidden {
+        display: none !important;
+    }
+    
+    /* Ensure mobile navigation respects role rules */
+    .mobile-sidebar .sidebar-item.safari-navigation-hidden,
+    .mobile-nav .nav-item.safari-navigation-hidden {
+        display: none !important;
+    }
+}
+
+/* Print styles - hide navigation completely when printing */
+@media print {
+    .layout-side-section,
+    .workspace-sidebar,
+    .safari-role-indicator {
+        display: none !important;
+    }
+}
